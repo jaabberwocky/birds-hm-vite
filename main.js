@@ -1,4 +1,4 @@
-// if you are reading this, github: 
+// if you are reading this, github: https://github.com/jaabberwocky/birds-hm-vite
 
 import Typewriter from 'typewriter-effect/dist/core';
 
