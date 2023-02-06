@@ -874,6 +874,7 @@ class Birds extends VantaBase {
             }
         }
     }
+
     onDestroy() { }
     onResize() { }
 }
