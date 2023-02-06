@@ -1,6 +1,7 @@
 // if you are reading this, github: https://github.com/jaabberwocky/birds-hm-vite
 
 import Typewriter from 'typewriter-effect/dist/core';
+import { VANTA } from './public/_base';
 
 const myCanvas = document.querySelector('#my-canvas');
 const typewriterTarget = document.querySelector('#my-canvas .text-box .typewriter')
@@ -11,8 +12,6 @@ audio.autoplay = true;
 audio.loop = true;
 
 window.addEventListener('click', () => {
-  // in case autoplay is disabled
-  audio.play();
 })
 
 window.addEventListener('mousedown', function (e) { e.preventDefault(); }, false);
@@ -23,6 +22,7 @@ window.addEventListener('mousemove', () => {
 })
 
 window.addEventListener('dblclick', () => {
+  audio.play();
   if (!document.fullscreenElement) {
     myCanvas.requestFullscreen();
   } else {
