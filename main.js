@@ -18,8 +18,7 @@ window.addEventListener('mousedown', function (e) { e.preventDefault(); }, false
 
 window.addEventListener('scroll', (e) => e.preventDefault())
 
-window.addEventListener('mousemove', () => {
-})
+window.addEventListener('touchmove', (e) => e.preventDefault())
 
 window.addEventListener('dblclick', () => {
   audio.play();
