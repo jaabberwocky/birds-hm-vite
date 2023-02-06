@@ -736,6 +736,7 @@ class Birds extends VantaBase {
                 this.valuesChanger = this.valuesChanger.bind(this)
                 this.valuesChanger()
                 this.initGpgpuBirds()
+                console.log('gpu birds');
             } catch (err) {
                 console.error('[vanta.js] birds init error: ', err)
             }
