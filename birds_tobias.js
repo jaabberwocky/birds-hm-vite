@@ -1,4 +1,4 @@
-// adapted from vanta
+// adapted from vanta: https://github.com/tengbao/vanta
 
 import VantaBase, { VANTA } from './_base.js'
 // import {rn, ri, sample} from './helpers.js'
@@ -13,7 +13,6 @@ let WIDTH = 32
 let BIRDS = WIDTH * WIDTH
 const BOUNDS = 800
 const BOUNDS_HALF = BOUNDS / 2
-
 
 const getNewBirdGeometry = (options) => {
     const scope = new THREE.BufferGeometry()
@@ -661,10 +660,7 @@ class Birds extends VantaBase {
     }
 
     initGpgpuBirds() {
-        this.options.speedLimit = 15
-        this.options.quantity = 9
-        this.options.scale = 1
-        this.options.wingSpan = 45
+
         const optionsWithEffect = Object.assign({}, this.options, { effect: this })
         const geometry = getNewBirdGeometry(optionsWithEffect)
 
@@ -730,7 +726,28 @@ class Birds extends VantaBase {
 
         const birds = this.birds = []
         const boids = this.boids = []
+
+        this.options = Object.assign(this.options,
+            {
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                backgroundColor: 0x03001c,
+                color1: 0x301e67,
+                color2: 0x5b8fb9,
+                birdSize: 1.30,
+                speedLimit: 3,
+                quantity: 7,
+                wingSpan: 45,
+            }
+        )
         const options = this.options
+
+
         let boid, bird
 
         if (GPGPU) {

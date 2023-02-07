@@ -49,16 +49,4 @@ typer
 
 VANTA.BIRDS({
   el: "#my-canvas",
-  mouseControls: true,
-  touchControls: true,
-  gyroControls: false,
-  minHeight: 200.00,
-  minWidth: 200.00,
-  scale: 1.00,
-  scaleMobile: 1.00,
-  backgroundColor: 0x03001c,
-  color1: 0x301e67,
-  color2: 0x5b8fb9,
-  birdSize: 1.30,
-  speedLimit: 3.00
 })
