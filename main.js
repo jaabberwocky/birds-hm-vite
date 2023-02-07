@@ -40,12 +40,6 @@ const typer = new Typewriter(typewriterTarget, {
 typer
   .start()
   .pauseFor(2500)
-  .typeString('Move mouse<br>Drag on Mobile')
-  .pauseFor(3000)
-  .deleteAll()
-  .typeString('Double click<br>Fullscreen')
-  .pauseFor(5000)
-  .deleteAll()
   .typeString('For Hui Min my love')
   .pauseFor(5000)
   .deleteAll()
