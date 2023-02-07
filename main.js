@@ -20,6 +20,8 @@ window.addEventListener('scroll', (e) => e.preventDefault())
 
 window.addEventListener('touchmove', (e) => { audio.play(); e.preventDefault(); }, { passive: false })
 
+window.addEventListener('touchend', () => audio.play())
+
 window.addEventListener('dblclick', () => {
   audio.play();
   if (!document.fullscreenElement) {
