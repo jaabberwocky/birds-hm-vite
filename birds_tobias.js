@@ -7,7 +7,7 @@ import GPUComputationRenderer from './GPUComputationRenderer.js'
 
 const win = typeof window == 'object'
 let THREE = win && window.THREE
-const GPGPU = !mobileCheck()
+const GPGPU = true
 
 let WIDTH = 32
 let BIRDS = WIDTH * WIDTH
