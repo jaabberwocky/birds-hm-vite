@@ -10,7 +10,7 @@ VANTA.register = (name, Effect) => {
 }
 VANTA.version = '0.5.24'
 
-export { VANTA }
+export { VANTA as TOBIAS }
 
 // const ORBITCONTROLS = {
 //   enableZoom: false,

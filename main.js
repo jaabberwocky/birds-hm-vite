@@ -1,7 +1,7 @@
 // if you are reading this, github: https://github.com/jaabberwocky/birds-hm-vite
 
 import Typewriter from 'typewriter-effect/dist/core';
-import { VANTA } from './_base';
+import { TOBIAS } from './_base';
 
 const myCanvas = document.querySelector('#my-canvas');
 const typewriterTarget = document.querySelector('#my-canvas .text-box .typewriter')
@@ -47,6 +47,6 @@ typer
   .pauseFor(5000)
 
 
-VANTA.BIRDS({
+TOBIAS.BIRDS({
   el: "#my-canvas",
 })

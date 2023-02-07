@@ -1,6 +1,6 @@
 // adapted from vanta: https://github.com/tengbao/vanta
 
-import VantaBase, { VANTA } from './_base.js'
+import VantaBase, { TOBIAS } from './_base.js'
 // import {rn, ri, sample} from './helpers.js'
 import { mobileCheck } from './helpers.js'
 import GPUComputationRenderer from './GPUComputationRenderer.js'
@@ -740,7 +740,7 @@ class Birds extends VantaBase {
                 color1: 0x301e67,
                 color2: 0x5b8fb9,
                 birdSize: 1.30,
-                speedLimit: 3,
+                speedLimit: 2.3,
                 quantity: 7,
                 wingSpan: 45,
             }
