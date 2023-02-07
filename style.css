@@ -19,13 +19,14 @@ html {
 }
 
 .text-box {
-  padding-right: 20%;
+  margin-right: 20%;
   padding-bottom: 15%;
   color: antiquewhite;
   font-family: 'Aboreto', cursive;
 }
 
 .text-box h1 {
+  margin-right: 20%;
   font-size: 96px;
   padding-bottom: 5px;
   margin-bottom: 0;

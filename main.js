@@ -43,7 +43,7 @@ typer
   .typeString('For Hui Min my love')
   .pauseFor(5000)
   .deleteAll()
-  .typeString('May we always fly next to each other')
+  .typeString('May we always fly<br>next to each other')
   .pauseFor(5000)
 
 
