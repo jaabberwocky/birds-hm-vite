@@ -19,6 +19,7 @@ html {
 }
 
 .text-box {
+  width: 400px;
   padding-right: 20%;
   padding-bottom: 15%;
   color: antiquewhite;
@@ -32,9 +33,9 @@ html {
 }
 
 .text-box h3 {
-  margin-top: 0;
-  padding-top: 5px;
-  padding-left: 10px;
+  position: absolute;
+  top: 10%;
+  left: 0;
   font-size: 15px;
   color: rgba(255, 255, 255, 0.2);
 }
