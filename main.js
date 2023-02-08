@@ -39,12 +39,12 @@ const typer = new Typewriter(typewriterTarget, {
 })
 typer
   .start()
-  .pauseFor(0)
+  .pauseFor(2500)
   .typeString('For Hui Min my love')
-  .pauseFor(0)
+  .pauseFor(5000)
   .deleteAll()
   .typeString('May we always fly next to each other')
-  .pauseFor(0)
+  .pauseFor(5000)
 
 
 TOBIAS.BIRDS({

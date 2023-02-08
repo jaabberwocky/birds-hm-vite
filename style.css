@@ -61,13 +61,13 @@ html {
   }
 
   .text-box h1 {
-    font-size: 36px;
+    font-size: 76px;
     text-align: center;
   }
 
   .text-box .typewriter {
     padding-left: 0px;
-    font-size: 10px;
+    font-size: 12px;
     text-align: center;
   }
 
