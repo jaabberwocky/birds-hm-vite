@@ -1,5 +1,3 @@
-// if you are reading this, github: https://github.com/jaabberwocky/birds-hm-vite
-
 import Typewriter from 'typewriter-effect/dist/core';
 import { TOBIAS } from './_base';
 
