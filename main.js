@@ -12,6 +12,12 @@ audio.autoplay = true;
 audio.loop = true;
 
 window.addEventListener('click', () => {
+  audio.play();
+  if (!document.fullscreenElement) {
+    myCanvas.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
 })
 
 window.addEventListener('mousedown', function (e) { e.preventDefault(); }, false);
@@ -22,14 +28,6 @@ window.addEventListener('touchmove', (e) => { audio.play(); e.preventDefault(); 
 
 window.addEventListener('touchend', () => audio.play())
 
-window.addEventListener('dblclick', () => {
-  audio.play();
-  if (!document.fullscreenElement) {
-    myCanvas.requestFullscreen();
-  } else {
-    document.exitFullscreen();
-  }
-})
 
 const typer = new Typewriter(typewriterTarget, {
   loop: false,
