@@ -1,8 +1,6 @@
 // adapted from vanta: https://github.com/tengbao/vanta
 
 import VantaBase, { TOBIAS } from './_base.js'
-// import {rn, ri, sample} from './helpers.js'
-import { mobileCheck } from './helpers.js'
 import GPUComputationRenderer from './GPUComputationRenderer.js'
 
 const win = typeof window == 'object'
