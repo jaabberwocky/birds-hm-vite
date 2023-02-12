@@ -4,7 +4,6 @@ import { TOBIAS } from './_base';
 const myCanvas = document.querySelector('#my-canvas');
 const typewriterTarget = document.querySelector('#my-canvas .text-box .typewriter')
 const audio = new Audio('./o.mp3');
-let audioPlaying = false;
 
 audio.volume = 0.5;
 audio.loop = true;
