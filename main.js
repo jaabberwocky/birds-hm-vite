@@ -19,7 +19,7 @@ window.addEventListener('scroll', (e) => e.preventDefault())
 
 window.addEventListener('touchmove', (e) => { e.preventDefault(); }, { passive: false })
 
-window.addEventListener('touchstart', () => checkAudio(true))
+window.addEventListener('touchstart', () => checkAudio())
 
 window.addEventListener('dblclick', (e) => {
   if (!document.fullscreenElement) {
@@ -39,17 +39,9 @@ window.addEventListener('keypress', (e) => {
   }
 })
 
-const checkAudio = (mobile = false) => {
-  if (mobile) {
-    if (audio.paused) {
-      audio.play()
-    } else {
-      audio.pause()
-    }
-  } else {
-    if (audio.paused) {
-      audio.play()
-    }
+const checkAudio = () => {
+  if (audio.paused) {
+    audio.play()
   }
 }
 
@@ -64,9 +56,6 @@ typer
   .start()
   .pauseFor(2500)
   .typeString('Move Mouse or Drag')
-  .pauseFor(2500)
-  .deleteAll()
-  .typeString('Space - Start/Stop Audio')
   .pauseFor(2500)
   .deleteAll()
   .typeString('Double Click - Enter FullScreen')
