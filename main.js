@@ -7,6 +7,7 @@ const audio = new Audio('./o.mp3');
 
 audio.volume = 0.5;
 audio.loop = true;
+audio.autoplay = true;
 
 window.addEventListener('click', () => {
   checkAudio();
