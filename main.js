@@ -40,12 +40,15 @@ window.addEventListener('keypress', (e) => {
 })
 
 const checkAudio = (mobile = false) => {
-  if (audio.paused) {
-    audio.play()
-  }
   if (mobile) {
-    if (!audio.paused) {
+    if (audio.paused) {
+      audio.play()
+    } else {
       audio.pause()
+    }
+  } else {
+    if (audio.paused) {
+      audio.play()
     }
   }
 }
