@@ -19,7 +19,7 @@ window.addEventListener('scroll', (e) => e.preventDefault())
 
 window.addEventListener('touchmove', (e) => { checkAudio(); e.preventDefault(); }, { passive: false })
 
-window.addEventListener('touchend', () => checkAudio())
+window.addEventListener('touchend', () => checkAudio(mobile = true))
 
 window.addEventListener('dblclick', (e) => {
   if (!document.fullscreenElement) {
@@ -39,9 +39,14 @@ window.addEventListener('keypress', (e) => {
   }
 })
 
-const checkAudio = () => {
+const checkAudio = (mobile = false) => {
   if (audio.paused) {
     audio.play()
+  }
+  if (mobile) {
+    if (!audio.paused) {
+      audio.pause()
+    }
   }
 }
 
