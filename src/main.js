@@ -1,5 +1,5 @@
 import Typewriter from 'typewriter-effect/dist/core';
-import { TOBIAS } from './_base';
+import { TOBIAS } from './_base'
 
 const myCanvas = document.querySelector('#my-canvas');
 const typewriterTarget = document.querySelector('#my-canvas .text-box .typewriter')
