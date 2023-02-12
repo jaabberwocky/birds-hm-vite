@@ -17,9 +17,9 @@ window.addEventListener('mousedown', function (e) { e.preventDefault(); }, false
 
 window.addEventListener('scroll', (e) => e.preventDefault())
 
-window.addEventListener('touchmove', (e) => { checkAudio(); e.preventDefault(); }, { passive: false })
+window.addEventListener('touchmove', (e) => { e.preventDefault(); }, { passive: false })
 
-window.addEventListener('touchend', () => checkAudio(mobile = true))
+window.addEventListener('touchstart', () => checkAudio(true))
 
 window.addEventListener('dblclick', (e) => {
   if (!document.fullscreenElement) {
