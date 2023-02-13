@@ -6,7 +6,6 @@ html {
   width: 100%;
 }
 
-
 #my-canvas {
   display: flex;
   flex-flow: row wrap;
