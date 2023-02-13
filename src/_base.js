@@ -1,5 +1,4 @@
 import { mobileCheck, q, color2Hex, clearThree } from './helpers.js'
-// const DEBUGMODE = window.location.toString().indexOf('VANTADEBUG') !== -1
 
 const win = typeof window == 'object'
 let THREE = (win && window.THREE) || {}
@@ -12,27 +11,6 @@ VANTA.version = '0.5.24'
 
 export { VANTA as TOBIAS }
 
-// const ORBITCONTROLS = {
-//   enableZoom: false,
-//   userPanSpeed: 3,
-//   userRotateSpeed: 2.0,
-//   maxPolarAngle: Math.PI * 0.8, // (pi/2 is pure horizontal)
-//   mouseButtons: {
-//     ORBIT: THREE.MOUSE.LEFT,
-//     ZOOM: null,
-//     PAN: null
-//   }
-// }
-// if (DEBUGMODE) {
-//   Object.assign(ORBITCONTROLS, {
-//     enableZoom: true,
-//     zoomSpeed: 4,
-//     minDistance: 100,
-//     maxDistance: 4500
-//   })
-// }
-
-// Namespace for errors
 const error = function () {
   Array.prototype.unshift.call(arguments, '[VANTA]')
   return console.error.apply(this, arguments)
@@ -66,10 +44,10 @@ VANTA.VantaBase = class VantaBase {
     Object.assign(this.options, userOptions)
 
     if (this.options.THREE) {
-      THREE = this.options.THREE // Optionally use a custom build of three.js
+      THREE = this.options.THREE
     }
 
-    // Set element
+
     this.el = this.options.el
     if (this.el == null) {
       error("Instance needs \"el\" param!")
@@ -84,12 +62,12 @@ VANTA.VantaBase = class VantaBase {
 
     this.prepareEl()
     this.initThree()
-    this.setSize() // Init needs size
+    this.setSize()
 
     try {
       this.init()
     } catch (e) {
-      // FALLBACK - just use color
+
       error('Init error', e)
       if (this.renderer && this.renderer.domElement) {
         this.el.removeChild(this.renderer.domElement)
@@ -101,17 +79,17 @@ VANTA.VantaBase = class VantaBase {
       return
     }
 
-    // After init
-    this.initMouse() // Triggers mouse, which needs to be called after init
+
+    this.initMouse()
     this.resize()
     this.animationLoop()
 
-    // Event listeners
+
     const ad = window.addEventListener
     ad('resize', this.resize)
-    window.requestAnimationFrame(this.resize) // Force a resize after the first frame
+    window.requestAnimationFrame(this.resize)
 
-    // Add event listeners on window, because this element may be below other elements, which would block the element's own mousemove event
+
     if (this.options.mouseControls) {
       ad('scroll', this.windowMouseMoveWrapper)
       ad('mousemove', this.windowMouseMoveWrapper)
@@ -132,7 +110,7 @@ VANTA.VantaBase = class VantaBase {
 
   prepareEl() {
     let i, child
-    // wrapInner for text nodes, so text nodes can be put into foreground
+
     if (typeof Node !== 'undefined' && Node.TEXT_NODE) {
       for (i = 0; i < this.el.childNodes.length; i++) {
         const n = this.el.childNodes[i]
@@ -144,7 +122,7 @@ VANTA.VantaBase = class VantaBase {
         }
       }
     }
-    // Set foreground elements
+
     for (i = 0; i < this.el.children.length; i++) {
       child = this.el.children[i]
       if (getComputedStyle(child).position === 'static') {
@@ -154,7 +132,7 @@ VANTA.VantaBase = class VantaBase {
         child.style.zIndex = 1
       }
     }
-    // Set canvas and container style
+
     if (getComputedStyle(this.el).position === 'static') {
       this.el.style.position = 'relative'
     }
@@ -180,7 +158,7 @@ VANTA.VantaBase = class VantaBase {
       console.warn("[VANTA] No THREE defined on window")
       return
     }
-    // Set renderer
+
     this.renderer = new THREE.WebGLRenderer({
       alpha: true,
       antialias: true
@@ -196,10 +174,10 @@ VANTA.VantaBase = class VantaBase {
 
   getCanvasElement() {
     if (this.renderer) {
-      return this.renderer.domElement // three.js
+      return this.renderer.domElement
     }
     if (this.p5renderer) {
-      return this.p5renderer.canvas // p5
+      return this.p5renderer.canvas
     }
   }
 
@@ -246,7 +224,7 @@ VANTA.VantaBase = class VantaBase {
   }
 
   triggerMouseMove(x, y) {
-    if (x === undefined && y === undefined) { // trigger at current position
+    if (x === undefined && y === undefined) {
       if (this.options.mouseEase) {
         x = this.mouseEaseX
         y = this.mouseEaseY
@@ -256,11 +234,11 @@ VANTA.VantaBase = class VantaBase {
       }
     }
     if (this.uniforms) {
-      this.uniforms.iMouse.value.x = x / this.scale // pixel values
-      this.uniforms.iMouse.value.y = y / this.scale // pixel values
+      this.uniforms.iMouse.value.x = x / this.scale
+      this.uniforms.iMouse.value.y = y / this.scale
     }
-    const xNorm = x / this.width // 0 to 1
-    const yNorm = y / this.height // 0 to 1
+    const xNorm = x / this.width
+    const yNorm = y / this.height
     typeof this.onMouseMove === "function" ? this.onMouseMove(xNorm, yNorm) : void 0
   }
 
@@ -275,7 +253,7 @@ VANTA.VantaBase = class VantaBase {
     this.height = Math.max(this.el.offsetHeight, this.options.minHeight)
   }
   initMouse() {
-    // Init mouseX and mouseY
+
     if ((!this.mouseX && !this.mouseY) ||
       (this.mouseX === this.options.minWidth / 2 && this.mouseY === this.options.minHeight / 2)) {
       this.mouseX = this.width / 2
@@ -312,12 +290,12 @@ VANTA.VantaBase = class VantaBase {
   }
 
   animationLoop() {
-    // Step time
+
     this.t || (this.t = 0)
-    // Uniform time
+
     this.t2 || (this.t2 = 0)
 
-    // Normalize animation speed to 60fps
+
     const now = performance.now()
     if (this.prevNow) {
       let elapsedTime = (now - this.prevNow) / (1000 / 60)
@@ -326,7 +304,7 @@ VANTA.VantaBase = class VantaBase {
 
       this.t2 += (this.options.speed || 1) * elapsedTime
       if (this.uniforms) {
-        this.uniforms.iTime.value = this.t2 * 0.016667 // iTime is in seconds
+        this.uniforms.iTime.value = this.t2 * 0.016667
       }
     }
     this.prevNow = now
@@ -342,7 +320,7 @@ VANTA.VantaBase = class VantaBase {
       }
     }
 
-    // Only animate if element is within view
+
     if (this.isOnScreen() || this.options.forceAnimate) {
       if (typeof this.onUpdate === "function") {
         this.onUpdate()
@@ -351,24 +329,24 @@ VANTA.VantaBase = class VantaBase {
         this.renderer.render(this.scene, this.camera)
         this.renderer.setClearColor(this.options.backgroundColor, this.options.backgroundAlpha)
       }
-      // if (this.stats) this.stats.update()
-      // if (this.renderStats) this.renderStats.update(this.renderer)
+
+
       if (this.fps && this.fps.update) this.fps.update()
       if (typeof this.afterRender === "function") this.afterRender()
     }
     return this.req = window.requestAnimationFrame(this.animationLoop)
   }
 
-  // setupControls() {
-  //   if (DEBUGMODE && THREE.OrbitControls) {
-  //     this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement)
-  //     Object.assign(this.controls, ORBITCONTROLS)
-  //     return this.scene.add(new THREE.AxisHelper(100))
-  //   }
-  // }
+
+
+
+
+
+
+
 
   restart() {
-    // Restart the effect without destroying the renderer
+
     if (this.scene) {
       while (this.scene.children.length) {
         this.scene.remove(this.scene.children[0])
@@ -384,7 +362,7 @@ VANTA.VantaBase = class VantaBase {
     if (typeof this.onInit === "function") {
       this.onInit()
     }
-    // this.setupControls()
+
   }
 
   destroy() {
